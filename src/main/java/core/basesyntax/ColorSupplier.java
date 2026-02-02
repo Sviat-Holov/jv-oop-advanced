@@ -3,11 +3,11 @@ package core.basesyntax;
 import java.util.Random;
 
 public class ColorSupplier {
-    private final Random random = new Random(); // Створюємо один раз як поле
+    private final Random random = new Random();
 
-    public Color getRandomColor() {
+    public String getRandomColor() {
         Color[] colors = Color.values();
-        // Повертаємо одразу одним рядком без зайвих змінних
-        return colors[random.nextInt(colors.length)];
+        // Используем name() для получения строкового представления константы enum
+        return colors[random.nextInt(colors.length)].name();
     }
 }

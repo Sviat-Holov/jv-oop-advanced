@@ -10,7 +10,7 @@ public class FigureSupplier {
 
     public Figure getRandomFigure() {
         int figureNumber = random.nextInt(FIGURE_COUNT);
-        String color = colorSupplier.getRandomColor().name(); // Используем name()
+        String color = colorSupplier.getRandomColor(); // Используем name()
 
         switch (figureNumber) {
             case 0:
