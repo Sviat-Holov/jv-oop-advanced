@@ -3,10 +3,10 @@ package core.basesyntax;
 import java.util.Random;
 
 public class FigureSupplier {
+    private static final int MAX_VALUE = 10; // Максимальный размер стороны или радиуса
     private static final int FIGURE_COUNT = 5; // Константа для магического числа
     private final Random random = new Random(); // Создаем один раз как поле
     private final ColorSupplier colorSupplier = new ColorSupplier();
-    private static final int MAX_VALUE = 10; // Максимальный размер стороны или радиуса
 
     public Figure getRandomFigure() {
         int figureNumber = random.nextInt(FIGURE_COUNT);
@@ -31,8 +31,8 @@ public class FigureSupplier {
                 double sideA = random.nextInt(MAX_VALUE) + 1;
                 double sideB = random.nextInt(MAX_VALUE) + 1;
                 double height = random.nextInt(MAX_VALUE) + 1;
-                return  new IsoscelesTrapezoid(color, sideA, sideB, height);
-                default:
+                return new IsoscelesTrapezoid(color, sideA, sideB, height);
+            default:
                 return getDefaultFigure();
         }
     }
