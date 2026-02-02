@@ -3,14 +3,14 @@ package core.basesyntax;
 import java.util.Random;
 
 public class FigureSupplier {
-    private static final int MAX_VALUE = 10; // Максимальный размер стороны или радиуса
-    private static final int FIGURE_COUNT = 5; // Константа для магического числа
-    private final Random random = new Random(); // Создаем один раз как поле
+    private static final int MAX_VALUE = 10;
+    private static final int FIGURE_COUNT = 5;
+    private final Random random = new Random();
     private final ColorSupplier colorSupplier = new ColorSupplier();
 
     public Figure getRandomFigure() {
         int figureNumber = random.nextInt(FIGURE_COUNT);
-        String color = colorSupplier.getRandomColor(); // Используем name()
+        String color = colorSupplier.getRandomColor();
 
         switch (figureNumber) {
             case 0:
@@ -38,6 +38,6 @@ public class FigureSupplier {
     }
 
     public Figure getDefaultFigure() {
-        return new Circle(10, Color.WHITE.name()); // Белый круг с радиусом 10
+        return new Circle(10, Color.WHITE.name());
     }
 }
