@@ -3,19 +3,41 @@ package core.basesyntax;
 import java.util.Random;
 
 public class FigureSupplier {
-    private static final int DEFAULT_RADIUS = 10;
-    private static final String DEFAULT_COLOR = "white";
-
-    private Random random = new Random();
-    private ColorSupplier colorSupplier = new ColorSupplier();
-
-    public Figure getDefaultFigure() {
-        // Возвращаем стандартную фигуру
-        return new Circle(DEFAULT_RADIUS, DEFAULT_COLOR);
-    }
+    private static final int FIGURE_COUNT = 5; // Константа для магического числа
+    private final Random random = new Random(); // Создаем один раз как поле
+    private final ColorSupplier colorSupplier = new ColorSupplier();
+    private static final int MAX_VALUE = 10; // Максимальный размер стороны или радиуса
 
     public Figure getRandomFigure() {
-        // Здесь будет логика выбора случайной фигуры
-        return null;
+        int figureNumber = random.nextInt(FIGURE_COUNT);
+        String color = colorSupplier.getRandomColor().name(); // Используем name()
+
+        switch (figureNumber) {
+            case 0:
+                double radius = random.nextInt(MAX_VALUE) + 1;
+                return new Circle(radius, color);
+            case 1:
+                double side = random.nextInt(MAX_VALUE) + 1;
+                return new Square(color, side);
+            case 2:
+                double firstLeg = random.nextInt(MAX_VALUE) + 1;
+                double secondLeg = random.nextInt(MAX_VALUE) + 1;
+                return new RightTriangle(color, firstLeg, secondLeg);
+            case 3:
+                double side1 = random.nextInt(MAX_VALUE) + 1;
+                double side2 = random.nextInt(MAX_VALUE) + 1;
+                return new Rectangle(color, side1, side2);
+            case 4:
+                double sideA = random.nextInt(MAX_VALUE) + 1;
+                double sideB = random.nextInt(MAX_VALUE) + 1;
+                double height = random.nextInt(MAX_VALUE) + 1;
+                return  new IsoscelesTrapezoid(color, sideA, sideB, height);
+                default:
+                return getDefaultFigure();
+        }
+    }
+
+    public Figure getDefaultFigure() {
+        return new Circle(10, Color.WHITE.name()); // Белый круг с радиусом 10
     }
 }
